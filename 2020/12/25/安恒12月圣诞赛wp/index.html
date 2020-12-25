@@ -481,7 +481,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="安恒十二月赛-DASCTF-amp-BJDCTF"><a href="#安恒十二月赛-DASCTF-amp-BJDCTF" class="headerlink" title="安恒十二月赛  DASCTF&amp;BJDCTF"></a>安恒十二月赛  DASCTF&amp;BJDCTF</h1><h2 id="misc部分"><a href="#misc部分" class="headerlink" title="misc部分"></a>misc部分</h2><h3 id="misc-3-马老师的flag丢了"><a href="#misc-3-马老师的flag丢了" class="headerlink" title="misc-3 马老师的flag丢了"></a>misc-3 马老师的flag丢了</h3><ol>
+                <h1 id="安恒十二月赛-DASCTF-amp-BJDCTF"><a href="#安恒十二月赛-DASCTF-amp-BJDCTF" class="headerlink" title="安恒十二月赛  DASCTF&amp;BJDCTF"></a>安恒十二月赛  DASCTF&amp;BJDCTF</h1><h2 id="misc部分"><a href="#misc部分" class="headerlink" title="misc部分"></a>misc部分</h2><h3 id="misc-3-马老师的flag丢了"><a href="#misc-3-马老师的flag丢了" class="headerlink" title="misc-3 马老师的flag丢了"></a>misc-3 马老师的flag丢了</h3><p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/2012245fe42c799ae57.png" alt="题目"></p>
+<ol>
 <li><p>拿到bmp的图片，密密麻麻全是二维码，一开始打算的是扫二维码，但扫了之后并没有发现什么有用的东西。</p>
 </li>
 <li><p>直接上Kali，binwalk一下，结果发现一个压缩包，里面一个1个jpg和2个txt</p>
@@ -494,14 +495,16 @@
 </ol>
 <p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.35.25.png"></p>
 <ol start="4">
-<li><p>老样子拖进010editor，看下是不是伪加密</p>
+<li><p>老样子拖进010editor，16有进制下，看了下好像是jpg伪加密</p>
 </li>
-<li><p>解出来一张jpg，不知道为什么其他的出不来，有懂的大佬可以给我讲一讲</p>
+<li><p>解出来一张jpg，不知道为什么其他的出不来，貌似txt是真加密，有懂的大佬可以给我讲一讲</p>
 </li>
 </ol>
 <p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.45.45.png"></p>
 <ol start="6">
-<li>二维码上明显有字，但看不清，拖进stegsolve，换了几个通道感觉不太明显，我想到把原来的图片相叠加，看看有没有奇迹（真的奇迹😈）</li>
+<li><p>二维码上明显有字，但看不清，拖进stegsolve，换了几个通道感觉不太明显，我想到把原来的图片相叠加，看看有没有奇迹（真的奇迹😈）</p>
+<p>后面有大佬说可以直接看出来，可能我眼瞎，TQL菜鸡瑟瑟发抖</p>
+</li>
 </ol>
 <p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.49.04.png"></p>
 <ol start="7">
