@@ -98,6 +98,8 @@ blockquote {
     padding: 1rem 0.8rem 0.2rem 0.8rem;
     color: #666;
     background-color: rgba(66, 185, 131, .1);
+    word-break: break-all;
+    word-wrap:break-word; 
 }
 
 pre {

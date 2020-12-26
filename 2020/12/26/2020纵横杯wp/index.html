@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="安恒12月圣诞赛部分持续更新wp, 菜鸡Seals6">
+    <meta name="keywords" content="2020纵横杯持续更新wp, 菜鸡Seals6">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>安恒12月圣诞赛部分持续更新wp | 菜鸡Seals6</title>
+    <title>2020纵横杯持续更新wp | 菜鸡Seals6</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">安恒12月圣诞赛部分持续更新wp</h1>
+                    <h1 class="description center-align post-title">2020纵横杯持续更新wp</h1>
                 </div>
             </div>
         </div>
@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-25
+                    2020-12-26
                 </div>
                 
 
@@ -481,49 +481,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="安恒十二月赛-DASCTF-amp-BJDCTF"><a href="#安恒十二月赛-DASCTF-amp-BJDCTF" class="headerlink" title="安恒十二月赛  DASCTF&amp;BJDCTF"></a>安恒十二月赛  DASCTF&amp;BJDCTF</h1><h2 id="misc部分"><a href="#misc部分" class="headerlink" title="misc部分"></a>misc部分</h2><h3 id="misc-3-马老师的flag丢了"><a href="#misc-3-马老师的flag丢了" class="headerlink" title="misc-3 马老师的flag丢了"></a>misc-3 马老师的flag丢了</h3><p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/2012245fe42c799ae57.png" alt="题目"></p>
+                <h1 id="纵横杯wp"><a href="#纵横杯wp" class="headerlink" title="纵横杯wp"></a>纵横杯wp</h1><h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h3><p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.52.29.png" alt="题目"></p>
+<p>刚开始我还以为是ascii码，转了一下发现不对，后面发现是8进制，转一下就好了还是很简单的</p>
+<h3 id="马赛克"><a href="#马赛克" class="headerlink" title="马赛克"></a>马赛克</h3><p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.55.42.png" alt="题目"></p>
 <ol>
-<li><p>拿到bmp的图片，密密麻麻全是二维码，一开始打算的是扫二维码，但扫了之后并没有发现什么有用的东西。</p>
-</li>
-<li><p>直接上Kali，binwalk一下，结果发现一个压缩包，里面一个1个jpg和2个txt</p>
-</li>
+<li>这个下载下来就是一张打了马赛克的图片</li>
 </ol>
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.23.36.png"></p>
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.31.02.png"></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.57.14.png" style="zoom:50%;" />
+
+<ol start="2">
+<li>题目上写了小明还原了马赛克，把字和flag前缀组合一下就好了，还是很简单的。直接下载GitHub的<a target="_blank" rel="noopener" href="https://github.com/beurtschipper/Depix">Depix</a>项目</li>
+</ol>
 <ol start="3">
-<li>尝试解一下，发现有密码，以为是刚刚二维码有东西，随便输了几个都不对，查看了一下图片详细信息，也没有什么有用价值。</li>
-</ol>
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.35.25.png"></p>
-<ol start="4">
-<li><p>老样子拖进010editor，16有进制下，看了下好像是jpg伪加密</p>
+<li><pre><code class="shell">#执行语句
+python3 depix.py -p mosaic.png -s images/searchimages/debruinseq_notepad_Windows10_closeAndSpaced.png -o output.png
+#-p 是你要处理的图片
+#-s 匹配的文字图片
+#-o 输出的图片</code></pre>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2022.06.18.png"></p>
 </li>
-<li><p>解出来一张jpg，不知道为什么其他的出不来，貌似txt是真加密，有懂的大佬可以给我讲一讲</p>
-</li>
-</ol>
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.45.45.png"></p>
-<ol start="6">
-<li><p>二维码上明显有字，但看不清，拖进stegsolve，换了几个通道感觉不太明显，我想到把原来的图片相叠加，看看有没有奇迹（真的奇迹😈）</p>
-<p>后面有大佬说可以直接看出来，可能我眼瞎，TQL菜鸡瑟瑟发抖</p>
+<li><p>此时马赛克就恢复出来了，就是那个图片的a需要猜一下</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/output.png" alt="output"></p>
+<p><code>flag&#123;0123468abd68abd0123&#125;</code></p>
 </li>
 </ol>
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2019.49.04.png"></p>
+<h3 id="My-Secret"><a href="#My-Secret" class="headerlink" title="My_Secret"></a>My_Secret</h3><p>这道题考的就是对工具的了解程度，心累</p>
+<p>我到最后也没解出来，只解了一半，解到了MD5，经过大佬提点瞬间清醒，果然是菜鸡</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/48576B95-8118-438E-B9B8-84F5BF210242.jpeg" alt="题目" style="zoom:50%;" />
+
+<ol>
+<li><p>下载下来一个压缩包，（强力抗议为什么这次赛事组要使用百度云，欺负我穷人一个16KB/s😭脑补一下）</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.29.34.png" style="zoom:50%;" />
+</li>
+<li><p>稍微玩过巫师3的都知道这个音乐是dlc里的血与酒，然后2个图片，因为题目提示的很明显LSB，所以我想都没想直接把stego.png扔到stegsolve，发现并没什么太多信息，题目写了pass1密码，我想到了我的lsb.py脚本，扔进去看看，<a target="_blank" rel="noopener" href="https://github.com/livz/cloacked-pixel">项目github地址</a>需要安装下载的可以看看</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.34.03.png"></p>
+</li>
+</ol>
+<p>4.解出来一串md5</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.36.47.png" style="zoom:50%;" />
+
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.37.48.png" style="zoom:50%;" />
+
+<ol start="5">
+<li><p>之后我考虑过wav的lsb隐写，但发现源码不对，jpg也找不到什么东西，至此断了线索</p>
+</li>
+<li><p>赛后大佬告诉我用两个工具<strong>oursecret</strong>和<strong>deepsound</strong>，有懂的大佬给我讲一讲是怎么想到的我还是太菜了，首先将音乐导入到deepsound中，密码就是那串md5 <code>38d668578a3686ab</code> ，发现有个pass.txt</p>
+</li>
+</ol>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.44.03.png"></p>
 <ol start="7">
-<li><p>这里巨坑，我以为到这里就完了，我把这段文字拿去MD5然后去提交，16，32位死活都不对，问了出题人说是后面还有题，我心想后面哪里还有题，意识到压缩包里面还有2个TXT。我把**<em>NianQingRenBuDongWuDe**</em>转为md5，16/32位大小写全都尝试了，<strong>32位小写</strong>终于解压出来，心累真的年轻人不讲武德。</p>
+<li><p>导出pass.txt，上面写着<code>carrier</code>，这个是secret.jpg的密码,我们打开oursecret，选择unhide导入图片，输入密码，发现了一个flag.txt<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-26%2021.46.50.png"></p>
 </li>
-<li><p>下面是解压的2个文档，明眼一看就知道文字替换一下</p>
-<center>好一个闪电五连鞭</center>
-
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2020.04.43.png"></p>
+<li><p>导出就好啦 <code>flag&#123;673cf5b8-72fe-4efb-8fe8-b636f04aaaed&#125;</code> </p>
+<p>嗨自己还是太菜了，刷题库</p>
 </li>
 </ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-25%2020.07.55.png" alt="" style="zoom:50%;" />
-
-<ol start="9">
-<li><p>一看全篇.!? 就知道是**0ok!**密码，直接扔进去<a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">brainfuck</a>网址解一波</p>
-<p>马老师我不负众望解出来了😂</p>
-<p><code>DASCTF&#123;f79f28f30232e26a2f51b6b75355afa9&#125;</code></p>
-</li>
-</ol>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/3BBB74C0-5970-4578-B0AC-3D84787CAE66.jpeg"></p>
 
                 
             </div>
@@ -550,7 +563,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://seals6.gitee.io/2020/12/25/%E5%AE%89%E6%81%9212%E6%9C%88%E5%9C%A3%E8%AF%9E%E8%B5%9Bwp/">https://seals6.gitee.io/2020/12/25/%E5%AE%89%E6%81%9212%E6%9C%88%E5%9C%A3%E8%AF%9E%E8%B5%9Bwp/</a>
+                    <a href="https://seals6.gitee.io/2020/12/26/2020%E7%BA%B5%E6%A8%AA%E6%9D%AFwp/">https://seals6.gitee.io/2020/12/26/2020%E7%BA%B5%E6%A8%AA%E6%9D%AFwp/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -759,9 +772,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/12/26/2020%E7%BA%B5%E6%A8%AA%E6%9D%AFwp/">
                     <div class="card-image">
@@ -779,9 +793,63 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-26
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/wp/" class="post-category">
+                                    wp
+                                </a>
+                            
+                            <a href="/categories/wp/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/misc/">
+                        <span class="chip bg-color">misc</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/12/25/%E5%AE%89%E6%81%9212%E6%9C%88%E5%9C%A3%E8%AF%9E%E8%B5%9Bwp/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="安恒12月圣诞赛部分持续更新wp">
+                        
+                        <span class="card-title">安恒12月圣诞赛部分持续更新wp</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -805,43 +873,6 @@
                         <span class="chip bg-color">misc</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/12/24/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-24
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Seals6
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
