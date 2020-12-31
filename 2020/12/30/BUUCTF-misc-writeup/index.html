@@ -482,6 +482,207 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="BUUCTF-misc"><a href="#BUUCTF-misc" class="headerlink" title="BUUCTF-misc"></a>BUUCTF-misc</h2><p>PS：🌟我会持续更新记录buu中的每道wp，更高效的方法可以对题干进行直接ctrl+F进行关键词搜索哦。</p>
+<h3 id="后门查杀"><a href="#后门查杀" class="headerlink" title="后门查杀"></a>后门查杀</h3><ol>
+<li><p>解压下来是网站源码，上D盾扫描</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.47.18.png" style="zoom:50%;" />
+</li>
+<li><p>题目提示Webshell中的密码(md5)即为答案，右键打开文件<code>ctrl+f</code>搜索pass</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.48.49.png" alt="截屏2020-12-31 下午10.48.49" style="zoom:50%;" />
+
+<ol start="3">
+<li>包上flag{}，<code>flag&#123;6ac45fb83b3bc355c024f5034b947dd3&#125;</code></li>
+</ol>
+<h3 id="荷兰宽带数据泄露"><a href="#荷兰宽带数据泄露" class="headerlink" title="荷兰宽带数据泄露"></a>荷兰宽带数据泄露</h3><ol>
+<li>解压下来是一个路由器配置文件</li>
+<li>使用工具RouterPassView打开</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.40.04.png" style="zoom:50%;" />
+
+<ol start="3">
+<li><p>ctrl+5搜索username或者password，这道题是username，套上flag即可<code>flag&#123;053700357621&#125;</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.43.14.png" style="zoom:50%;" />
+
+
+
+</li>
+</ol>
+<h3 id="来首歌吧"><a href="#来首歌吧" class="headerlink" title="来首歌吧"></a>来首歌吧</h3><ol>
+<li>盲听歌有滴滴滴的声音，应该是摩斯密码，拉进audacity</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.32.48.png" style="zoom:50%;" />
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#手动打出来</span></span><br><span class="line">..... -... -.-. ----. ..--- ..... -.... ....- ----. -.-. -... ----- .---- ---.. ---.. ..-. ..... ..--- . -.... .---- --... -.. --... ----- ----. ..--- ----. .---- ----. .---- -.-.</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>转码拼接出来就好了<code>flag&#123;5BC925649CB0188F52E617D70929191C&#125;</code></li>
+</ol>
+<h3 id="数据包中的线索"><a href="#数据包中的线索" class="headerlink" title="数据包中的线索"></a>数据包中的线索</h3><ol>
+<li>拖进Wireshark，分析数据包</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.16.54.png" style="zoom:50%;" />
+
+<ol start="2">
+<li><p>发现一段流量，发了大量base64的数据，追踪TCP，/9j开头应该是jpg文件了</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.18.59.png" style="zoom:50%;" />
+</li>
+<li><p>base64转Hex，手动拖进010editor转图片</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.26.24.png" style="zoom:50%;" />
+
+<ol start="4">
+<li><p>打开图片即可<code>flag&#123;209acebf6324a09671abc31c869de72c&#125;</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8810.27.14.png" style="zoom:50%;" />
+
+
+
+</li>
+</ol>
+<h3 id="九连环"><a href="#九连环" class="headerlink" title="九连环"></a>九连环</h3><p>知识点：图片隐写，steghide，伪加密</p>
+<ol>
+<li>题目一开始给了一张图片：</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20191006094214442.png"></p>
+<ol start="2">
+<li>拿到winhex中去看，发现后面还有压缩包，于是丢到foremost中分离，果然分离出了一个压缩包，但是解压需要密码，我第一反应是这个图片的名字：</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/2019100609442144.png"></p>
+<p>​    这长得多像一个密码啊但实际是并不是。</p>
+<p>​    然后我手动分离了这个压缩包，（zip的文件头50 4B 03 04，结尾块标识50 4B 05 06）</p>
+<ol start="3">
+<li><p>尝试了一下伪加密，解压出来了，里面有一个图片和一个压缩包，第二个压缩包也是加密的</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-28%2014.38.39.png" style="zoom:50%;" />
+</li>
+<li><p>老方法看了下binwalk，foremost无果，看了wp，知道了一个神器：steghide，它也可以隐藏数据、文件到图片里，当然也可以用来提取，用法如下：（来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Blood_Seeker/article/details/81837571%EF%BC%89">https://blog.csdn.net/Blood_Seeker/article/details/81837571）</a></p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20191006095037382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rlc3RpbnkxNTA3,size_16,color_FFFFFF,t_70"></p>
+<p>kali下安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install steghide</span><br></pre></td></tr></table></figure>
+<p>这道题没有设置密码，使用steghide需要输入密码时直接回车就好。果然用了之后，在提取出的ko.txt中发现了密码，解压后既可获得flag：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191006095329609.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191006095347535.png"></p>
+<h3 id="面具下的flag"><a href="#面具下的flag" class="headerlink" title="面具下的flag"></a>面具下的flag</h3><ol>
+<li><p>解压拖进010editor，发现图片末尾有PK包提示</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%889.10.29.png" style="zoom:50%;" />
+</li>
+<li><p>kali中分离下压缩包<code>foremost -T mianju.jpg</code>发现压缩包需要密码</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%889.13.05.png" style="zoom:50%;" />
+
+<ol start="3">
+<li>怀疑是zip伪加密，修改目录区加密标志位</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%889.15.13.png" style="zoom:50%;" />
+
+<ol start="4">
+<li><p>解压出来是一个虚拟机磁盘文件，因为是vmdk，扔进linux中的7z进行解压，会比windows多出几个文件，这个我也不知道为什么使用7z，先挖个坑找找资料。</p>
+<p><code>7z x flag.vmdk</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%889.25.28.png" style="zoom:50%;" />
+</li>
+<li><p>Key_part_one打开后，是一个brainfuck解密，解密只有一半，那么应该下一个在Key_part_two中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Key_part_one</span></span><br><span class="line">+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;</span><br><span class="line">++++[ -&gt;+++ +&lt;]&gt;+ +++.&lt; +++++ +[-&gt;- ----- &lt;]&gt;-- ----- --.&lt;+ +++[- &gt;----</span><br><span class="line">&lt;]&gt;-- ----- .&lt;+++ [-&gt;++ +&lt;]&gt;+ +++++ .&lt;+++ +[-&gt;- ---&lt;] &gt;-.&lt;+ +++++ [-&gt;++</span><br><span class="line">++++&lt; ]&gt;+++ +++.&lt; +++++ [-&gt;-- ---&lt;] &gt;---- -.+++ .&lt;+++ [-&gt;-- -&lt;]&gt;- ----- .&lt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">解码后</span></span><br><span class="line">flag&#123;N7F5_AD5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Key_part_two打开有两个文档，第一个是假的，第二个打开是0ok!解密，同样的网址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Key_part_two</span></span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook?</span><br><span class="line">Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook!</span><br><span class="line">Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook.</span><br><span class="line">Ook. Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook!</span><br><span class="line">Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook? Ook. Ook? Ook! Ook. Ook?</span><br><span class="line">Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook.</span><br><span class="line">Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook!</span><br><span class="line">Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook?</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook! Ook! Ook! Ook!</span><br><span class="line">Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook! Ook. Ook?</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook!</span><br><span class="line">Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook! Ook! Ook!</span><br><span class="line">Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!</span><br><span class="line">Ook? Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!</span><br><span class="line">Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook!</span><br><span class="line">Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.</span><br><span class="line">Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">解码后</span></span><br><span class="line">_i5_funny!&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>拼接一下，<code>flag&#123;N7F5_AD5_i5_funny!&#125;</code></p>
+</li>
+</ol>
+<h3 id="webshell后门"><a href="#webshell后门" class="headerlink" title="webshell后门"></a>webshell后门</h3><ol>
+<li><p>使用D盾扫描一下</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%889.04.50.png" style="zoom:50%;" />
+
+<ol start="2">
+<li>打开第一个文件，ctrl+f搜索一下pass，<code>flag&#123;ba8e6c6f35a53933b871480bb9a9545c&#125;</code></li>
+</ol>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%889.06.07.png" style="zoom:50%;" />
+
+
+
+<h3 id="被劫持的神秘礼物"><a href="#被劫持的神秘礼物" class="headerlink" title="被劫持的神秘礼物"></a>被劫持的神秘礼物</h3><ol>
+<li>题目提示很明显，找到账号密码哈希一下即可</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.55.49.png" style="zoom:50%;" />
+
+<ol start="2">
+<li>直接打开Wireshark，一进来就有个post，追踪TCP流，账号密码就出来了，稍微拼接一下<code>adminaadminb</code></li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.57.40.png" style="zoom:50%;" />
+
+<ol start="3">
+<li>32位MD5一下<code>flag&#123;1d240aafe21a86afc11f38a45b541a49&#125;</code></li>
+</ol>
+<h3 id="刷新过的图片"><a href="#刷新过的图片" class="headerlink" title="刷新过的图片"></a>刷新过的图片</h3><ol>
+<li><p>这道题提醒的很明显使用F5-steganography解密，<a target="_blank" rel="noopener" href="https://github.com/matthewgao/F5-steganography">F5-steganography项目</a>，因为没找到有密码，直接使用输出<code>java Extract Misc.jpg</code>打开输出的output.txt</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.47.05.png" style="zoom:50%;" />
+</li>
+<li><p>根据文件头提醒是个压缩包，结果有密码，盲猜伪加密修改一下</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.49.30.png" style="zoom:50%;" />
+
+<p>3.解压即可<code>flag&#123;96efd0a2037d06f34199e921079778ee&#125;</code></p>
+<h3 id="snake"><a href="#snake" class="headerlink" title="snake"></a>snake</h3><ol>
+<li>解压下来是一条🐍的照片，拖入010末尾发现有PK标记</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.12.22.png" style="zoom:50%;" />
+
+<ol start="2">
+<li><p>kali分离一下压缩包，解压出来</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.17.53.png" style="zoom:50%;" />
+</li>
+<li><p>因为不知道文件格式，先拖进010一个个看看，发现key文件是一串base64</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">key文件</span></span><br><span class="line">V2hhdCBpcyBOaWNraSBNaW5haidzIGZhdm9yaXRlIHNvbmcgdGhhdCByZWZlcnMgdG8gc25ha2VzPwo=</span><br></pre></td></tr></table></figure>
+<p>上py脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#base64 decrypt</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">a=<span class="string">&#x27;V2hhdCBpcyBOaWNraSBNaW5haidzIGZhdm9yaXRlIHNvbmcgdGhhdCByZWZlcnMgdG8gc25ha2VzPwo=&#x27;</span></span><br><span class="line">b=base64.b64decode(a)</span><br><span class="line">print(b)</span><br><span class="line"></span><br><span class="line"><span class="comment">#解码</span></span><br><span class="line">What <span class="keyword">is</span> Nicki Minaj<span class="string">&#x27;s favorite song that refers to snakes?</span></span><br></pre></td></tr></table></figure></li>
+<li><p>解码出来的字符串意思是Nicki Minaj的歌那首与蛇有关，度娘了一下anaconda是蛇的意思</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.24.32.png" style="zoom:50%;" />
+
+<ol start="5">
+<li>顺便百度了一下cipher的意思，是密钥，这应该是个解密题，而anaconda应该是密钥，解密这个文件，在密码学中serpent加密正好英文是蛇的意思🐛🐛，<a target="_blank" rel="noopener" href="http://serpent.online-domain-tools.com/">在线serpent解密</a><code>CTF&#123;who_knew_serpent_cipher_existed&#125;</code></li>
+</ol>
+<img src="https://img-blog.csdnimg.cn/20200930221620569.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vY2h1Nzc3Nzc3Nw==,size_16,color_FFFFFF,t_70#pic_center" style="zoom:50%;" />
+
+
+
+<h3 id="BJDCTF-2nd-圣火昭昭-y1ng"><a href="#BJDCTF-2nd-圣火昭昭-y1ng" class="headerlink" title="[BJDCTF 2nd]圣火昭昭-y1ng"></a>[BJDCTF 2nd]圣火昭昭-y1ng</h3><ol>
+<li><p>解压出来，图片属性详细信息中有新佛曰</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.02.20.png" style="zoom:50%;" />
+</li>
+<li><p>在线新佛曰解密，根据题目提示去掉最后三个字母<code>gemlove</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.03.16.png" style="zoom:50%;" />
+</li>
+<li><p>应该是jpg加密隐写了，并且还有密码，试了一下是outguess加密</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">outguess -k gemlove -r sheng_huo_zhao_zhao.jpg flag.txt</span><br><span class="line">cat flag.txt</span><br><span class="line"></span><br><span class="line">BJD&#123;wdnmd_misc_1s_so_Fuck1ng_e@sy&#125;</span><br></pre></td></tr></table></figure>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%888.08.54.png" style="zoom:50%;" />
+
+
+
+</li>
+</ol>
+<h3 id="梅花香自苦寒来"><a href="#梅花香自苦寒来" class="headerlink" title="梅花香自苦寒来"></a>梅花香自苦寒来</h3><ol>
+<li><p>拖进010editor，发现最后一堆16进制数据</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-28%2017.45.02.png" style="zoom:50%;" />
+</li>
+<li><p>上脚本16进制转string</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with open(&#x27;hex.txt&#x27;,&#x27;r&#x27;) as h:</span><br><span class="line">    h=h.read()</span><br><span class="line">tem=&#x27;&#x27;</span><br><span class="line">for i in range(0,len(h),2):</span><br><span class="line">    tem=&#x27;0x&#x27;+h[i]+h[i+1]</span><br><span class="line">    tem=int(tem,base=16)</span><br><span class="line">    print(chr(tem),end=&#x27;&#x27;)</span><br></pre></td></tr></table></figure>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-28%2017.46.59.png" style="zoom:50%;" />
+</li>
+<li><p>这一看就是坐标点，处理下数据把括号删除，把逗号换成空格，扔进kali gnuplot转出来</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-28%2017.48.28.png"></p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-28%2017.49.09.png" style="zoom:50%;" />
+
+<ol start="4">
+<li>扫一下就出来了<code>flag&#123;40fc0a979f759c8892f4dc045e28b820</code></li>
+</ol>
 <h3 id="菜刀666"><a href="#菜刀666" class="headerlink" title="菜刀666"></a>菜刀666</h3><ol>
 <li>流量分析，先扔入kali分离文件，分离出一个压缩包</li>
 </ol>
@@ -532,7 +733,9 @@
 <img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.36.51.png" style="zoom:50%;" />
 
 <ol start="2">
-<li><p>kali 进行分离解压，一个doc文档，里面二维码扫描即可<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.38.50.png" style="zoom:50%;" /></p>
+<li><p>kali 进行分离解压，一个doc文档，里面二维码扫描即可</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.38.50.png" style="zoom:50%;" />
+
 <p><code>flag&#123;you are the best!&#125;</code></p>
 </li>
 </ol>
