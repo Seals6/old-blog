@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-misc的Writeup, 菜鸡Seals6">
+    <meta name="keywords" content="Bugku-misc的Writeup, 菜鸡Seals6">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-misc的Writeup | 菜鸡Seals6</title>
+    <title>Bugku-misc的Writeup | 菜鸡Seals6</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-misc的Writeup</h1>
+                    <h1 class="description center-align post-title">Bugku-misc的Writeup</h1>
                 </div>
             </div>
         </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/BUUCTF/" class="post-category">
-                                BUUCTF
+                            <a href="/categories/Bugku/" class="post-category">
+                                Bugku
                             </a>
                         
                     </div>
@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-30
+                    2020-12-31
                 </div>
                 
 
@@ -481,354 +481,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="BUUCTF-misc"><a href="#BUUCTF-misc" class="headerlink" title="BUUCTF-misc"></a>BUUCTF-misc</h2><p>PS：🌟我会持续更新记录buu中的每道wp，更高效的方法可以对题干进行直接ctrl+F进行关键词搜索哦。</p>
-<h3 id="菜刀666"><a href="#菜刀666" class="headerlink" title="菜刀666"></a>菜刀666</h3><ol>
-<li>流量分析，先扔入kali分离文件，分离出一个压缩包</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%8810.00.44.png" style="zoom:50%;" />
-
-<ol start="2">
-<li>使用Wireshark进行分析，过滤下http，发现了一个压缩包，应该是kali分离出来的压缩包，但是它提示需要压缩包密码，我们继续分析</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%8810.07.12.png" style="zoom:50%;" />
-
-<ol start="3">
-<li><p>在上一组流量中目录对比中，发现多了一个666.jpg，应该上传了一张jpg，仔细观察有一段大段流量base64加密中出现了<code>FF D8</code>文件头标示，我们将他复制，导入到010editor中</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%8810.18.59.png" style="zoom:50%;" />
+                <h2 id="Bugku-misc"><a href="#Bugku-misc" class="headerlink" title="Bugku-misc"></a>Bugku-misc</h2><p>PS：🌟我会持续更新记录bugku中的每道wp，更高效的方法可以对题干进行直接ctrl+F进行关键词搜索哦。</p>
+<h3 id="Photo的自我修养"><a href="#Photo的自我修养" class="headerlink" title="Photo的自我修养"></a>Photo的自我修养</h3><ol>
+<li><p>题目提示flag好像隐藏在图片中，下载下来1个压缩包，解压出来一张图片还有加密的两个压缩包，图片明显下面还有东西，怀疑改了尺寸</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%882.34.04.png" style="zoom:50%;" />
 </li>
-<li><p>导入16进制，图片就出来了<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%8810.28.09.png" style="zoom: 50%;" /></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%8810.26.22.png" style="zoom:50%;" />
+<li><p>拖入010editor，crc直接报错，修改高一把嗦</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%882.35.25.png" style="zoom:50%;" />
 </li>
-<li><p>用上图密码，解压压缩包<code>flag&#123;3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z&#125;</code></p>
+<li><p>图片提示<code>B:One2021@</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%882.36.19.png" style="zoom:50%;" />
 </li>
-</ol>
-<h3 id="被偷走的文件"><a href="#被偷走的文件" class="headerlink" title="被偷走的文件"></a>被偷走的文件</h3><ol>
-<li>经典流量分析题</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.47.59.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>先不分析，拖入kali分离文件，分离一个压缩包</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.50.34.png" style="zoom:50%;" />
+<li><p>第二个压缩包伪加密，图片详细信息中的属性有第二个提示<code>A:Just</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%882.41.20.png" style="zoom:33%;" />
 </li>
-<li><p>打开Wireshark，过滤ftp，追踪流，发现下载了一个flag.rar，正是分离的压缩包</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.52.45.png" style="zoom:50%;" />
-</li>
-<li><p>打开压缩包，加密，尝试弱口令爆破<code>5790</code></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.54.59.png" style="zoom:50%;" />
-</li>
-<li><p>打开即可获得<code>flag&#123;6fe99a5d03fb01f833ec3caa80358fa3&#125;</code></p>
-</li>
-</ol>
-<h3 id="BJDCTF2020-认真你就输了"><a href="#BJDCTF2020-认真你就输了" class="headerlink" title="[BJDCTF2020]认真你就输了"></a>[BJDCTF2020]认真你就输了</h3><ol>
-<li><p>Excel打不开，拖入010editor，发现PK头部，改为zip</p>
-</li>
-<li><p>解压在charts有个flag.txt<code>flag&#123;M9eVfi2Pcs#&#125;</code></p>
-</li>
-</ol>
-<h3 id="BJDCTF2020-藏藏藏"><a href="#BJDCTF2020-藏藏藏" class="headerlink" title="[BJDCTF2020]藏藏藏"></a>[BJDCTF2020]藏藏藏</h3><ol>
-<li>下载下来一个压缩包，解压后一张图片，一个没用的txt，老样子把图片拖入010editor，末尾有压缩包标记</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.36.51.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>kali 进行分离解压，一个doc文档，里面二维码扫描即可<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%889.38.50.png" style="zoom:50%;" /></p>
-<p><code>flag&#123;you are the best!&#125;</code></p>
-</li>
-</ol>
-<h3 id="秘密文件"><a href="#秘密文件" class="headerlink" title="秘密文件"></a>秘密文件</h3><ol>
-<li>经典流量分析题</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.57.12.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>不想先分析，可以直接扔进kali分离一下，分离出一个压缩包<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%888.02.56.png" style="zoom:50%;" /></p>
-</li>
-<li><p>使用wireshark,对流量分析，过滤下FTP，追踪TCP发现他们传输了一个压缩包</p>
-</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%888.04.41.png" style="zoom:50%;" />
-
-<ol start="4">
-<li>我们打开我们分离的压缩包，发现需要密码，尝试弱口令爆破<code>1903</code></li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%888.06.48.png" style="zoom:50%;" />
-
-<ol start="5">
-<li>打开txt <code>flag&#123;d72e5a671aa50fa5f400e5d10eedeaa5&#125;</code></li>
-</ol>
-<h3 id="GXYCTF2019-佛系青年"><a href="#GXYCTF2019-佛系青年" class="headerlink" title="[GXYCTF2019]佛系青年"></a>[GXYCTF2019]佛系青年</h3><ol>
-<li><p>下载出来压缩包，解压时txt文档需要密码，怀疑为伪加密，拖进010editor，找到压缩源文件目录区将加密方式修改为<code>50 4B 01 02 1F 00 14 00 00 00</code>只要为偶数都可以</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.49.45.png" style="zoom:50%;" />
-</li>
-<li><p>正常解压，一个png，一个txt，txt末尾有加密</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">佛曰：遮等諳勝能礙皤藐哆娑梵迦侄羅哆迦梵者梵楞蘇涅侄室實真缽朋能。奢怛俱道怯都諳怖梵尼怯一罰心缽謹缽薩苦奢夢怯帝梵遠朋陀諳陀穆諳所呐知涅侄以薩怯想夷奢醯數羅怯諸</span><br></pre></td></tr></table></figure></li>
-<li><p>一看就是与佛论禅加密，直接在线一把嗦<code>flag&#123;w0_fo_ci_Be1&#125;</code></p>
-</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.55.03.png" style="zoom:50%;" />
-
-
-
-
-
-<h3 id="BJDCTF2020-你猜我是个啥"><a href="#BJDCTF2020-你猜我是个啥" class="headerlink" title="[BJDCTF2020]你猜我是个啥"></a>[BJDCTF2020]你猜我是个啥</h3><ol>
-<li>下载下来一个压缩包，但解压失败，怀疑文件头错误拖进010editor</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.42.45.png" style="zoom:50%;" />
-
-<ol start="2">
-<li>查看文件头是个png，往下翻，文件结尾就有<code>flag&#123;i_am_fl@g&#125;</code></li>
-</ol>
-<p>😂啊这</p>
-<h3 id="BJDCTF-2nd-EasyBaBa"><a href="#BJDCTF-2nd-EasyBaBa" class="headerlink" title="[BJDCTF 2nd]EasyBaBa"></a>[BJDCTF 2nd]EasyBaBa</h3><p>1.下载下来是一个jpg图片，拖进010editor发现末尾有PK标志</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.09.03.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>扔进kali分离压缩包<code>foremost -T ezbb.jpg</code></p>
-</li>
-<li><p>解压出来一个jpg，但是不能预览，怀疑文件头损坏，扔进010editor</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.13.04.png" style="zoom:50%;" />
-</li>
-<li><p>从文件头标示来看这是个avi，改一下后缀名，成功播放，在4秒之后有4个二维码</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%887.15.08.png" style="zoom:33%;" />
-</li>
-<li><p>拖进fcpx或者pr等视频剪辑软件，一帧一帧扫码即可，每个二维码扫出来是16进制</p>
-<img src="https://img2020.cnblogs.com/blog/2156042/202010/2156042-20201022165953034-2076612490.png" style="zoom:50%;" />
-</li>
-<li><p>将4个二维码的16进制拼接一下，转换成字符串，看样子并不像栅栏密码，稍微改一下顺序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">16进制</span></span><br><span class="line">6167696E5F6C6F76655F59424A447B696D316E677D</span><br><span class="line"><span class="meta">#</span><span class="bash">字符串</span></span><br><span class="line">agin_love_YBJD&#123;im1ng&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash">改改顺序</span></span><br><span class="line">BJD&#123;imagin_love_Y1ng&#125;</span><br></pre></td></tr></table></figure>
-
+<li><p>两个密码拼接一下<code>JustOne2021@</code>为第三个压缩包密码，解压即得<code>flag&#123;Hello2021_Good&#125;</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%882.42.22.png" style="zoom:35%;" />
 
 </li>
 </ol>
-<h3 id="SWPU2019-神奇的二维码"><a href="#SWPU2019-神奇的二维码" class="headerlink" title="[SWPU2019]神奇的二维码"></a>[SWPU2019]神奇的二维码</h3><ol>
-<li>下载解压一个二维码，扫出来是个fake的</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.31.30.png" style="zoom:50%;" />
-
-<ol start="2">
-<li>拖入010editor，发现末尾有Rar标志，扔进kali分离压缩包</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.33.38.png" style="zoom:50%;" />
-
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.42.49.png" style="zoom:50%;" />
-
-<ol start="3">
-<li><p>分理出4个压缩包，一个一个来拆解</p>
-</li>
-<li><p>第一个压缩包里面一个表情包，一个加密的rar，表情包里并没有找到有用的信息</p>
-</li>
-<li><p>第二个压缩包一个被base64加密的txt，将第一个压缩包解出来后的图片也没有flag</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">YXNkZmdoamtsMTIzNDU2Nzg5MA==</span><br><span class="line"><span class="meta">#</span><span class="bash">解码后</span></span><br><span class="line">asdfghjkl1234567890</span><br><span class="line"><span class="meta">#</span><span class="bash">这个为第一个加密rar的密码</span></span><br></pre></td></tr></table></figure></li>
-<li><p>第三个压缩包解压后是个套娃base64，一直解码即可，<code>comEON_YOuAreSOSoS0great</code></p>
-</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.52.26.png" style="zoom:50%;" />
-
-<ol start="7">
-<li>第四个压缩包解压需要密码，我们把上一个密码输入，成功解压出一首MP3，听了一下就是嘀嘀嘀的声音，摩斯密码一把嗦<code>flag&#123;morseisveryveryeasy&#125; </code></li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.58.49.png" style="zoom:50%;" />
-
-
-
-<h3 id="穿越时空的思念"><a href="#穿越时空的思念" class="headerlink" title="穿越时空的思念"></a>穿越时空的思念</h3><ol>
-<li>题目写了从曲子中听出了什么，所以应该是音乐隐写的题</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.12.53.png" style="zoom:50%;" />
-
-<ol start="2">
-<li>下载下来听了一下，有哔哔哔的声音，应该是摩斯密码，直接上audacity</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.16.38.png" style="zoom:50%;" />
-
-<ol start="3">
-<li>转换出来，解密一下</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0010 11111 00111 11110 1000 100 10000 0010 00000 00000 01111 01111 00011 11110 0 0 100 0 1000 11100 0 00001 00000 01 01111 11000 00000 1000 11111 11000 11100 10000</span><br><span class="line"><span class="meta">#</span><span class="bash">转换后</span></span><br><span class="line">F029BD6F551139EEDEB8E45A175B0786</span><br><span class="line"><span class="meta">#</span><span class="bash">转换为小写</span></span><br><span class="line">flag&#123;f029bd6f551139eedeb8e45a175b0786&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>还可以将左声道关闭，提取出右声道，扔进kali，使用Morse2ascii工具</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.25.28.png" style="zoom:50%;" />
-
-
-
-<h3 id="BJDCTF2020-一叶障目"><a href="#BJDCTF2020-一叶障目" class="headerlink" title="[BJDCTF2020]一叶障目"></a>[BJDCTF2020]一叶障目</h3><ol>
-<li><p>下载下来一张图片，直接扔进010，发现crc报错，一看就是尺寸问题</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.06.38.png" style="zoom:50%;" />
-</li>
-<li><p>直接在模版找到IHDR，修改高16进制一把嗦 <code>xaflag&#123;66666&#125;</code></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.07.41.png" style="zoom:50%;" />
-
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.08.57.png" style="zoom:50%;" />
-
-
-
-</li>
-</ol>
-<h3 id="BJDCTF2020-鸡你太美"><a href="#BJDCTF2020-鸡你太美" class="headerlink" title="[BJDCTF2020]鸡你太美"></a>[BJDCTF2020]鸡你太美</h3><ol>
-<li>解压出来2张gif，另一张没有预览信息，估计文件头出错，扔进010editor</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.58.04.png" style="zoom:50%;" />
-
-<p>2.少了GIF头文件标示<code>47 49 36 38</code>添加上去</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.00.38.png" style="zoom:50%;" />
-
-<ol start="3">
-<li>flag就出来了<code>flag&#123;zhi_yin_you_are_beautiful&#125;</code>经典下划线老坑了</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%886.02.18.png" style="zoom:50%;" />
-
-
-
-<h3 id="BJDCTF2020-just-a-rar"><a href="#BJDCTF2020-just-a-rar" class="headerlink" title="[BJDCTF2020]just_a_rar"></a>[BJDCTF2020]just_a_rar</h3><ol>
-<li>下载出来，文件名写的4位数，很明显让我们爆破</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.51.21.png" style="zoom:50%;" />
-
-<ol start="2">
-<li>上工具一把嗦，密码<code>2016</code></li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.53.05.png" style="zoom:50%;" />
-
-<ol start="3">
-<li>解压出来一张图片，经典属性详细信息flag<code>flag&#123;Wadf_123&#125;</code></li>
-</ol>
-<h3 id="BJDCTF-2nd-Real-EasyBaBa"><a href="#BJDCTF-2nd-Real-EasyBaBa" class="headerlink" title="[BJDCTF 2nd]Real_EasyBaBa"></a>[BJDCTF 2nd]Real_EasyBaBa</h3><ol>
-<li>下载下来的图片就是上一次EasyBaBa的改版，直接先导入010editor观察一下，红色的地方明显不对，火眼精金的人可以发现这是flag</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/easybaba-real.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>继续向后面看，可以发现后面有一串<code>50 4B FF FF</code>开头的16进制，怀疑是zip文件，看到最后<code>50 4B 05 06</code>确定为zip文件，稍微修改一下ZIP文件头</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.27.57.png" style="zoom:50%;" />
-</li>
-<li><p>将zip文件手动恢复提取出来</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.32.48.png" alt="" style="zoom:50%;" />
-</li>
-<li><p>解压出来一个hint，我们打开是一个二维码</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.34.44.png" style="zoom:50%;" />
-</li>
-<li><p>我们稍微缩小处理下，扫出来是一个<code>od -vtx1 ./draw.png | head -56 | tail -28</code>输出文件头和尾的命令。我们直接扔进kali 一把嗦</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.41.10.png" style="zoom:50%;" />
-</li>
-<li><p>复制出来，扔进010editor，把00替换成两个空格，flag就出来了</p>
-</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-30%20%E4%B8%8B%E5%8D%885.46.26.png" style="zoom:50%;" />
-
-<p>​           <code>BJD&#123;572154976&#125;</code></p>
-<h3 id="GKCTF2020-Pokemon"><a href="#GKCTF2020-Pokemon" class="headerlink" title="[GKCTF2020]Pokémon"></a>[GKCTF2020]Pokémon</h3><ol>
-<li>这是一个GBA模拟器游戏，百度下就可以下载模拟器，和绿宝石游戏教程，走到103号公路，路上的草就是flag</li>
-</ol>
-<h3 id="ACTF新生赛2020-outguess"><a href="#ACTF新生赛2020-outguess" class="headerlink" title="[ACTF新生赛2020]outguess"></a>[ACTF新生赛2020]outguess</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43877387/article/details/103123858">outguess安装使用教程</a></p>
-<ol>
-<li>下来一个压缩包里面一个图片，一个txt文档</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/outguess1.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>txt文档和题目提示都很明显，用outguess解密，一般outguess解密时会附带密码，所以我们从图片上找一找有什么突破点，在详细信息中发现了核心价值观编码</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/outguess2.png" style="zoom:50%;" />
-</li>
-<li><p>找个在线工具解码一下</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/outguess3.png" style="zoom:50%;" />
-</li>
-<li><p>使用outguess工具，解出最后的flag</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">outguess -k &quot;abc&quot; -r /home/s6/桌面/CTF/outguess-master/mmm.jpg -r flag.txt</span><br><span class="line">cat flag.txt</span><br><span class="line">ACTF&#123;gue33_Gu3Ss!2020&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h3 id="BJDCTF2020-纳尼"><a href="#BJDCTF2020-纳尼" class="headerlink" title="[BJDCTF2020]纳尼"></a>[BJDCTF2020]纳尼</h3><ol>
-<li><p>下载出来一个压缩包，将其解压，一个GIF和一个hint，GIF打不开，怀疑文件头损坏，拖进010editor</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8810.34.35.png" style="zoom:50%;" />
-</li>
-<li><p>缺少GIF文件头标示，添加上去<code>47 49 46 38</code>，打开GIF，上面闪烁base64加密文字<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8810.36.50.png" style="zoom:50%;" /></p>
-</li>
-<li><p>每一帧分析，一共四组，拼接一下<code>Q1RGe3dhbmdfYmFvX3FpYW5nX2lzX3NhZH0=</code></p>
-</li>
-<li><p>Base64一把嗦<code>CTF&#123;wang_bao_qiang_is_sad&#125;</code></p>
-</li>
-</ol>
-<h3 id="SWPU2019-我有一只马里奥"><a href="#SWPU2019-我有一只马里奥" class="headerlink" title="[SWPU2019]我有一只马里奥"></a>[SWPU2019]我有一只马里奥</h3><ol>
-<li>下载下来是一个马里奥exe，运行后会生成1.txt</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.06.24.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>ntfs提示很明显，ntfs流隐写，有两种方法可以使用cmd命令或者使用工具</p>
-</li>
-<li><p>使用cmd命令<code>notepad 1.txt:flag.txt</code></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.08.46.png" style="zoom:50%;" />
-
-</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.09.17.png" style="zoom:50%;" />
-
-<ol start="4">
-<li><p>或者使用ntfsstreamseditor工具一把嗦<code>swupctf&#123;ddg_is_cute&#125;</code></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.10.43.png" style="zoom:50%;" />
-
-
-
-</li>
-</ol>
-<h3 id="谁赢了比赛？"><a href="#谁赢了比赛？" class="headerlink" title="谁赢了比赛？"></a>谁赢了比赛？</h3><ol>
-<li>下载下来是一个棋谱，围棋看不懂，直接拖进010发现末尾有压缩包痕迹</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.48.02.png" style="zoom:50%;" />
-
-<ol start="2">
-<li><p>Kali分离一下<code>binwalk -e 1.png</code>结果出了个rar压缩包，里面有一张被加密了的GIF图和txt。txt文档提示<code>where do you think the flag is?</code>尝试弱口令爆破，密码<code>1020</code></p>
-</li>
-<li><p>解压出GIF图片，分帧查看<code>convert 1.gif *.png</code></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.53.31.png" style="zoom:50%;" />
-</li>
-<li><p>前面都是小图标，在309时出现一个大图片，查看一下，下面写着<code>do you know wher is the flag</code> </p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.55.52.png" style="zoom: 33%;" />
-</li>
-<li><p>拖进stegsolve，看一下通道，发现red0通道有二维码，扫一下就出来了<code>flag&#123;shanxiajingwu_won_the_game&#125;</code></p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8A%E5%8D%8811.57.56.png" style="zoom:33%;" />
-
-
-
-</li>
-</ol>
-<h3 id="Mysterious"><a href="#Mysterious" class="headerlink" title="Mysterious"></a>Mysterious</h3><ol>
-<li>根据题目介绍，应该是Reverse题</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%8812.48.28.png" style="zoom: 33%;" />
-
-<ol start="2">
-<li>打开程序，输入数字字符没有反应，应该是做了限制</li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%881.12.30.png" style="zoom:50%;" />
-
-<ol start="3">
-<li><p>拖入ida，<code>shift+F12</code>打开字符串窗口</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%881.15.24.png" style="zoom:50%;" />
-</li>
-<li><p>点击进入，发现了疑似flag字符</p>
-</li>
-</ol>
-<img src="https://images2.freesion.com/357/ac/ac0fd750baf94ceebeb7974d5bf1bfc5.png" style="zoom:50%;" />
-
-<ol start="5">
-<li>在<code>Functions Window</code>找到这个地址，点击，<code>F5</code>反汇编查看伪C代码</li>
-</ol>
-<img src="https://images2.freesion.com/494/81/819af91f6fc7dfebc8d3dced5ca3b7de.png" style="zoom:50%;" />
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">int __stdcall sub_401090(HWND hWnd, int a2, int a3, int a4)</span><br><span class="line">&#123;</span><br><span class="line">  char v5; // [esp+50h] [ebp-310h]</span><br><span class="line">  CHAR Text[4]; // [esp+154h] [ebp-20Ch]</span><br><span class="line">  char v7; // [esp+159h] [ebp-207h]</span><br><span class="line">  __int16 v8; // [esp+255h] [ebp-10Bh]</span><br><span class="line">  char v9; // [esp+257h] [ebp-109h]</span><br><span class="line">  int v10; // [esp+258h] [ebp-108h]</span><br><span class="line">  CHAR String; // [esp+25Ch] [ebp-104h]</span><br><span class="line">  char v12; // [esp+25Fh] [ebp-101h]</span><br><span class="line">  char v13; // [esp+260h] [ebp-100h]</span><br><span class="line">  char v14; // [esp+261h] [ebp-FFh]</span><br><span class="line"></span><br><span class="line">  memset(&amp;String, 0, 0x104u);</span><br><span class="line">  v10 = 0;</span><br><span class="line">  if ( a2 == 16 )</span><br><span class="line">  &#123;</span><br><span class="line">    DestroyWindow(hWnd);</span><br><span class="line">    PostQuitMessage(0);</span><br><span class="line">  &#125;</span><br><span class="line">  else if ( a2 == 273 )</span><br><span class="line">  &#123;</span><br><span class="line">    if ( a3 == 1000 )</span><br><span class="line">    &#123;</span><br><span class="line">      GetDlgItemTextA(hWnd, 1002, &amp;String, 260);</span><br><span class="line">      strlen(&amp;String);</span><br><span class="line">      if ( strlen(&amp;String) &gt; 6 )</span><br><span class="line">        ExitProcess(0);</span><br><span class="line">      v10 = atoi(&amp;String) + 1;</span><br><span class="line">      if ( v10 == 123 &amp;&amp; v12 == 120 &amp;&amp; v14 == 122 &amp;&amp; v13 == 121 )</span><br><span class="line">      &#123;</span><br><span class="line">        strcpy(Text, &quot;flag&quot;);</span><br><span class="line">        memset(&amp;v7, 0, 0xFCu);</span><br><span class="line">        v8 = 0;</span><br><span class="line">        v9 = 0;</span><br><span class="line">        _itoa(v10, &amp;v5, 10);</span><br><span class="line">        strcat(Text, &quot;&#123;&quot;);</span><br><span class="line">        strcat(Text, &amp;v5);</span><br><span class="line">        strcat(Text, &quot;_&quot;);</span><br><span class="line">        strcat(Text, &quot;Buff3r_0v3rf|0w&quot;);</span><br><span class="line">        strcat(Text, &quot;&#125;&quot;);</span><br><span class="line">        MessageBoxA(0, Text, &quot;well done&quot;, 0);</span><br><span class="line">      &#125;</span><br><span class="line">      SetTimer(hWnd, 1u, 0x3E8u, TimerFunc);</span><br><span class="line">    &#125;</span><br><span class="line">    if ( a3 == 1001 )</span><br><span class="line">      KillTimer(hWnd, 1u);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>满足</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( v10 == <span class="number">123</span> &amp;&amp; v12 == <span class="number">120</span> &amp;&amp; v14 == <span class="number">122</span> &amp;&amp; v13 == <span class="number">121</span> )</span><br></pre></td></tr></table></figure>
-<p>输入的字符长度不能大于<code>6</code>，否则结束程序，<code>v10</code>被<code>atoi()</code>函数转为数字整型并且<code>+1</code>，那么满足条件的<code>v10</code>应该为<code>122</code>，<code>v12</code>、<code>v13</code>、<code>v14</code>对应的Ascii字符为<code>xyz</code>，所以输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">122xyz</span><br></pre></td></tr></table></figure>
-<p>即可得到flag</p>
-<img src="https://images1.freesion.com/144/a2/a23f646612e1d5b7c94e306c2ac5fe78.png" style="zoom:50%;" />
-
-<p><code>flag&#123;123_Buff3r_0v3rf|0w&#125;</code></p>
 
                 
             </div>
@@ -855,7 +526,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://seals6.gitee.io/2020/12/30/BUUCTF-misc-writeup/">https://seals6.gitee.io/2020/12/30/BUUCTF-misc-writeup/</a>
+                    <a href="https://seals6.gitee.io/2020/12/31/Bugku-misc-Writeup/">https://seals6.gitee.io/2020/12/31/Bugku-misc-Writeup/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1068,9 +739,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/12/31/Bugku-misc-Writeup/">
                     <div class="card-image">
@@ -1088,9 +760,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1103,6 +775,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1125,13 +798,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/27/%E9%9A%8F%E7%AC%94%E7%9B%B2%E6%B0%B4%E5%8D%B0%E4%B8%8Ebase64%E9%9A%90%E5%86%99%E6%9D%82%E9%A1%B9%E9%A2%98/">
+                <a href="/2020/12/30/BUUCTF-misc-writeup/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="随笔盲水印与base64隐写杂项题">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="BUUCTF-misc的Writeup">
                         
-                        <span class="card-title">随笔盲水印与base64隐写杂项题</span>
+                        <span class="card-title">BUUCTF-misc的Writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1142,14 +815,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category">
-                                    CTF
+                            <a href="/categories/BUUCTF/" class="post-category">
+                                    BUUCTF
                                 </a>
                             
                             
@@ -1163,8 +836,8 @@
                         <span class="chip bg-color">misc</span>
                     </a>
                     
-                    <a href="/tags/%E7%9B%B2%E6%B0%B4%E5%8D%B0/">
-                        <span class="chip bg-color">盲水印</span>
+                    <a href="/tags/wp/">
+                        <span class="chip bg-color">wp</span>
                     </a>
                     
                 </div>
