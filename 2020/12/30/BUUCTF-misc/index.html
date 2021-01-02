@@ -1087,6 +1087,120 @@
 <p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-01%20%E4%B8%8B%E5%8D%884.27.54.png"></p>
 </li>
 </ol>
+<h3 id="喵喵喵"><a href="#喵喵喵" class="headerlink" title="喵喵喵"></a>喵喵喵</h3><ol>
+<li><p>解压出来是一张猫猫的图片，老样子我们拖进010editor</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.22.24.png" style="zoom:50%;" />
+</li>
+<li><p>并没有发现隐写压缩包内容等，我们考虑png的LSB隐写，直接上stegsolve</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.23.47.png" alt="" style="zoom:50%;" />
+</li>
+<li><p>发现red,green,blue的0通道上面有东西，导出16进制，preview一下发现了一张PNG</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.25.55.png" style="zoom: 33%;" />
+</li>
+<li><p>导出是一张只有上半截的二维码</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.27.09.png" style="zoom:50%;" />
+</li>
+<li><p>拖入010看一下是不是改了尺寸，crc报错，修改高度</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.29.11.png" style="zoom:50%;" />
+</li>
+<li><p>扫描出来是个百度云网盘，下载解压出来一个txt，提示flag并不在这里</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.30.17.png" style="zoom:50%;" />
+</li>
+<li><p>因为解压的是txt，怀疑是NTFS流隐写，使用NTFSsteamseditor工具</p>
+<p>⚠️<strong>一定要使用WinRAR进行解压，不然使用其他软件解压可能出现找不到隐写的文件</strong></p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.33.00.png" style="zoom:33%;" />
+
+<ol start="8">
+<li><p>导出是个pyc文件，在线反编译一下就行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># 如果觉得不错，可以推荐给你的朋友！http://tool.lu/pyc</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span>():</span></span><br><span class="line">    flag = <span class="string">&#x27;*************&#x27;</span></span><br><span class="line">    ciphertext = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(flag)):</span><br><span class="line">        s = <span class="built_in">chr</span>(i ^ <span class="built_in">ord</span>(flag[i]))</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            s = <span class="built_in">ord</span>(s) + <span class="number">10</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            s = <span class="built_in">ord</span>(s) - <span class="number">10</span></span><br><span class="line">        ciphertext.append(<span class="built_in">str</span>(s))</span><br><span class="line">    <span class="keyword">return</span> ciphertext[::-<span class="number">1</span>]</span><br><span class="line">ciphertext = [<span class="string">&#x27;96&#x27;</span>, <span class="string">&#x27;65&#x27;</span>, <span class="string">&#x27;93&#x27;</span>, <span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;91&#x27;</span>, <span class="string">&#x27;97&#x27;</span>, <span class="string">&#x27;22&#x27;</span>, <span class="string">&#x27;93&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;102&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;94&#x27;</span>, <span class="string">&#x27;132&#x27;</span>, <span class="string">&#x27;46&#x27;</span>, <span class="string">&#x27;112&#x27;</span>, <span class="string">&#x27;64&#x27;</span>, <span class="string">&#x27;97&#x27;</span>, <span class="string">&#x27;88&#x27;</span>, <span class="string">&#x27;80&#x27;</span>, <span class="string">&#x27;82&#x27;</span>, <span class="string">&#x27;137&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;90&#x27;</span>, <span class="string">&#x27;109&#x27;</span>, <span class="string">&#x27;99&#x27;</span>, <span class="string">&#x27;112&#x27;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这段还是比较简单，我们制作一个解密脚本就行<code>flag&#123;Y@e_Cl3veR_C1Ever!&#125;</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span>():</span></span><br><span class="line">    ciphertext = [<span class="string">&#x27;96&#x27;</span>, <span class="string">&#x27;65&#x27;</span>, <span class="string">&#x27;93&#x27;</span>, <span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;91&#x27;</span>, <span class="string">&#x27;97&#x27;</span>, <span class="string">&#x27;22&#x27;</span>, <span class="string">&#x27;93&#x27;</span>, <span class="string">&#x27;70&#x27;</span>, <span class="string">&#x27;102&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;94&#x27;</span>, <span class="string">&#x27;132&#x27;</span>, <span class="string">&#x27;46&#x27;</span>, <span class="string">&#x27;112&#x27;</span>, <span class="string">&#x27;64&#x27;</span>, <span class="string">&#x27;97&#x27;</span>, <span class="string">&#x27;88&#x27;</span>, <span class="string">&#x27;80&#x27;</span>, <span class="string">&#x27;82&#x27;</span>, <span class="string">&#x27;137&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;90&#x27;</span>, <span class="string">&#x27;109&#x27;</span>, <span class="string">&#x27;99&#x27;</span>, <span class="string">&#x27;112&#x27;</span>]</span><br><span class="line">    ciphertext=ciphertext[::-<span class="number">1</span>] <span class="comment">#逆序输出</span></span><br><span class="line">    flag=<span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span> (<span class="built_in">len</span>(ciphertext)):</span><br><span class="line">        <span class="keyword">if</span> i%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">            b=<span class="built_in">int</span>(ciphertext[i])-<span class="number">10</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b=<span class="built_in">int</span>(ciphertext[i])+<span class="number">10</span></span><br><span class="line">        b = b^i</span><br><span class="line">        flag+=<span class="built_in">chr</span>(b)</span><br><span class="line">    print(flag)</span><br><span class="line">decode()   </span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="ACTF新生赛2020-base64"><a href="#ACTF新生赛2020-base64" class="headerlink" title="[ACTF新生赛2020]base64"></a>[ACTF新生赛2020]base64</h3><ol>
+<li><p>解压出来一个txt，和一个二维码，文本中大量的base64，根据题目提示应该是base64隐写了</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%883.50.51.png" style="zoom:50%;" />
+</li>
+<li><p>直接上解密脚本<code>ACTF&#123;6aseb4_f33!&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44009311/article/details/102770083?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control">base64隐写原理</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#base64隐写解密py</span></span><br><span class="line">base64chars = <span class="string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span></span><br><span class="line">flag=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;1.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        line=line[:-<span class="number">1</span>]</span><br><span class="line">        num=line.count(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> num == <span class="number">0</span> :</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        lastchar = line[-(num+<span class="number">1</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="comment">#print(line,num,lastchar)</span></span><br><span class="line">        myindex = base64chars.index(lastchar)</span><br><span class="line">        <span class="comment">#print(myindex)</span></span><br><span class="line">        bin_str = <span class="built_in">bin</span>(myindex)[<span class="number">2</span>:].zfill(<span class="number">6</span>)</span><br><span class="line">        <span class="comment">#print(bin_str)</span></span><br><span class="line">        flag+=bin_str[<span class="number">6</span>-<span class="number">2</span>*num:]</span><br><span class="line">        <span class="comment">#print(bin_str[6-2*num:])</span></span><br><span class="line">print(<span class="string">&#x27;&#x27;</span>.join([<span class="built_in">chr</span>(<span class="built_in">int</span>(flag[i:i + <span class="number">8</span>], <span class="number">2</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(flag), <span class="number">8</span>)]))</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="HBNIS2018-来题中等的吧"><a href="#HBNIS2018-来题中等的吧" class="headerlink" title="[HBNIS2018]来题中等的吧"></a>[HBNIS2018]来题中等的吧</h3><ol>
+<li><p>解压出来一张图片</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%884.12.12.png" style="zoom:50%;" />
+</li>
+<li><p>排序很有规律，应该是摩斯密码，短线代表<code>.</code>长线代表<code>-</code></p>
+<p><code>.-/.-../.--./..../.-/.-../.-/-...</code></p>
+<p>解码一下</p>
+<p><code>alphalab</code></p>
+<p>套上flag<code>flag&#123;alphalab&#125;</code></p>
+</li>
+</ol>
+<h3 id="SWPU2019-伟大的侦探"><a href="#SWPU2019-伟大的侦探" class="headerlink" title="[SWPU2019]伟大的侦探"></a>[SWPU2019]伟大的侦探</h3><ol>
+<li><p>解压压缩包，misc解压需要密码，txt有提示寻找对应的密码编码</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%884.43.56.png" style="zoom:50%;" />
+</li>
+<li><p>拖进010，每个编码试一下，发现是EBCDBIC，解压密码<code>wllm_is_the_best_team!</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%884.45.23.png" style="zoom:50%;" />
+</li>
+<li><p>解压出来是一堆小人图片，应该是福尔摩斯小人密码<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%884.46.50.png" style="zoom:50%;" /></p>
+</li>
+<li><p>百度下找对应的<a target="_blank" rel="noopener" href="http://www.tuilixy.net/thread-82619-1-1.html">解密表</a>，解出来<code>flag&#123;iloveholmesandwllm&#125;</code></p>
+</li>
+</ol>
+<h3 id="黑客帝国"><a href="#黑客帝国" class="headerlink" title="黑客帝国"></a>黑客帝国</h3><ol>
+<li>解压出来一个txt，里面数据是16进制，导入到010editor中</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.04.33.png" style="zoom:50%;" />
+
+<ol start="2">
+<li><p>发现是rar头，改为rar压缩包，发现被加密了，尝试弱口令爆破<code>3690</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.05.46.png" style="zoom:50%;" />
+</li>
+<li><p>解压出来一个png文件，但是预览不出，怀疑文件头损坏，拖入010</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.07.09.png" style="zoom:50%;" />
+</li>
+<li><p>改为jpg文件头格式，<code>FF D8 FF E0</code>，正常打开图片即可</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.09.48.png" style="zoom: 33%;" />
+
+
+
+</li>
+</ol>
+<h3 id="WUSTCTF2020-find-me"><a href="#WUSTCTF2020-find-me" class="headerlink" title="[WUSTCTF2020]find_me"></a>[WUSTCTF2020]find_me</h3><ol>
+<li><p>下载出来是张图片，属性详细信息Exif写了信息</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.24.42.png" style="zoom:50%;" />
+</li>
+<li><p>盲文文本解密<code>wctf2020&#123;y$0$u_f$1$n$d$_M$e$e$e$e$e&#125;</code></p>
+</li>
+</ol>
+<h3 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h3><ol>
+<li><p>说实话这道题挺坑的，我从第一步就走错了，因为下载的是加密压缩包，并且题目提示弱口令，于是我就去爆破了，爆破无果，于是发现压缩包里有空白换行注释</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.56.57.png" style="zoom:50%;" />
+</li>
+<li><p>扔进sublimetext，发现是摩斯密码</p>
+<p><code>.... . .-.. .-.. ----- ..-. --- .-. ..- --</code></p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%885.59.20.png" style="zoom:50%;" />
+
+<ol start="3">
+<li><p>在线转换出来<code>HELL0FORUM</code>，⚠️一般的摩斯密码题密码都是小写，而这道题却是大写，解压出来一张png图片</p>
+</li>
+<li><p>老样子上010，stegsolve无果后，想到题目弱口令，应该是python lsb隐写，扔进kali一把嗦，密码是<code>123456</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-02%20%E4%B8%8B%E5%8D%886.03.05.png" style="zoom:50%;" />
+
+<p><code>flag&#123;jsy09-wytg5-wius8&#125;</code></p>
+</li>
+</ol>
 
                 
             </div>
