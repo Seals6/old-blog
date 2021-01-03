@@ -467,7 +467,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-01
+                    2021-01-03
                 </div>
                 
 
@@ -503,6 +503,52 @@
 <li><p>两个密码拼接一下<code>JustOne2021@</code>为第三个压缩包密码，解压即得<code>flag&#123;Hello2021_Good&#125;</code></p>
 <img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-31%20%E4%B8%8B%E5%8D%882.42.22.png" style="zoom:35%;" />
 
+
+
+</li>
+</ol>
+<h3 id="乌云邀请码"><a href="#乌云邀请码" class="headerlink" title="乌云邀请码"></a>乌云邀请码</h3><ol>
+<li><p>解压出来一张图片，拉入010没有发现其他异常，考虑LSB隐写</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%886.04.17.png" style="zoom:50%;" />
+</li>
+<li><p>stegsolve发现RGB 0通道上方有东西</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%886.05.35.png" style="zoom:50%;" />
+</li>
+<li><p>提取，调整调整一下顺序，preview一下<code>flag&#123;Png_Lsb_Y0u_k0nw!&#125;</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%886.06.15.png" alt="" style="zoom:33%;" />
+
+
+
+</li>
+</ol>
+<h3 id="成果狗成果狗"><a href="#成果狗成果狗" class="headerlink" title="成果狗成果狗"></a>成果狗成果狗</h3><p>⚠️这道题没十年脑血栓真的做不出来！</p>
+<ol>
+<li><p>解压文件，得到fl.jpg</p>
+</li>
+<li><p>拖入010观察，发现有两段FFD8，将两个文件进行分离,得到两个图片</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E5%9B%BE%E7%89%87%201.png"></p>
+</li>
+<li><p>继续分析1.jpg（原fl.jpg），文件尾部FFD9后面有一段加密文字，为base64加密</p>
+</li>
+</ol>
+<p>得到一段hex，将hex导入至FFD9之前，保存文件</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E5%9B%BE%E7%89%87%202.png" style="zoom:48%;" />
+
+<ol start="4">
+<li><p>找到文件00C007-00C00A这段为文件的宽高，修改至宽高一样得到图片，</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E5%9B%BE%E7%89%87%203.png"></p>
+</li>
+<li><p>很明显，图片显示不正常，但是图片下面显示关键词<code>Nice&#125;</code></p>
+</li>
+<li><p>猜测，刚刚导入的hex为2.jpg中结尾，如上找到文件端00A003-00A006为图片宽高，修改成一致保存,得到正常图片</p>
+</li>
+</ol>
+<p>​                                           <img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E5%9B%BE%E7%89%87%204.png" style="zoom: 50%;" /> </p>
+<ol start="6">
+<li><p>同理，在2.jpg后面也有段base64，解码导入010之后，修改宽高一致，得到图片</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E5%9B%BE%E7%89%87%205.png" style="zoom:48%;" />
+</li>
+<li><p>稍微拼接一下<code>flag&#123;JFIF_1s_very_Nice&#125;</code></p>
 </li>
 </ol>
 

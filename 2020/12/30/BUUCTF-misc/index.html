@@ -1201,6 +1201,41 @@
 <p><code>flag&#123;jsy09-wytg5-wius8&#125;</code></p>
 </li>
 </ol>
+<h3 id="MRCTF2020-你能看懂音符吗"><a href="#MRCTF2020-你能看懂音符吗" class="headerlink" title="[MRCTF2020]你能看懂音符吗"></a>[MRCTF2020]你能看懂音符吗</h3><ol>
+<li><p>解压压缩包，不能正常解压，应该是文件头出错了，拖进010editor</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%8812.23.42.png" alt="" style="zoom:50%;" />
+</li>
+<li><p>文件头标示反了，改成<code>52 61</code>，正常解压一个word，打开提示<code>文档东西没了</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%8812.25.20.png" alt="" style="zoom:50%;" />
+</li>
+<li><p>还有许多换行符，应该是隐藏文字了，找到设置-显示-勾选隐藏文字</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%8812.26.50.png" alt="" style="zoom:50%;" />
+
+<ol start="4">
+<li>打开后发现音乐符号，音乐符号解密一把嗦<code>MRCTF&#123;thEse_n0tes_ArE_am@zing~&#125;</code></li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%8812.27.26.png" style="zoom:50%;" />
+
+<h3 id="john-in-the-middle"><a href="#john-in-the-middle" class="headerlink" title="john-in-the-middle"></a>john-in-the-middle</h3><ol>
+<li><p>Wireshark打开数据包，分析可知，传输了五个png，导出所有对象</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%882.02.30.png" alt="截屏2021-01-03 下午2.02.30" style="zoom:33%;" />
+</li>
+<li><p>010查看所有图片文件信息，没有发现，考虑PNG的LSB隐写，发现<code>falg&#123;J0hn_th3_Sn1ff3r&#125;</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%882.06.35.png" style="zoom:50%;" />
+
+
+
+</li>
+</ol>
+<h3 id="GUET-CTF2019-KO"><a href="#GUET-CTF2019-KO" class="headerlink" title="[GUET-CTF2019]KO"></a>[GUET-CTF2019]KO</h3><ol>
+<li><p>打开txt，发现是0ok！加密编码，brainfuck网址在线解</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-03%20%E4%B8%8B%E5%8D%885.35.04.png"></p>
+</li>
+<li><p>在套一下<code>flag&#123;welcome to CTF&#125;</code></p>
+</li>
+</ol>
 
                 
             </div>
