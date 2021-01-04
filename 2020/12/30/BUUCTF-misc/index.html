@@ -1236,7 +1236,55 @@
 <li><p>在套一下<code>flag&#123;welcome to CTF&#125;</code></p>
 </li>
 </ol>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h3><ol>
+<li><p>解压出来又有加密的68个压缩包，拖进010看了下不是伪加密，打开压缩包发现都只有4个字节的txt文本</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%881.16.31.png" style="zoom:50%;" />
+</li>
+<li><p>考虑CRC爆破，找了个大佬的脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CrackCrc</span>(<span class="params">crc</span>):</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> dic:</span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> dic:</span><br><span class="line">			<span class="keyword">for</span> k <span class="keyword">in</span> dic:</span><br><span class="line">				<span class="keyword">for</span> h <span class="keyword">in</span> dic:</span><br><span class="line">					s = i + j + k + h</span><br><span class="line">					<span class="keyword">if</span> crc == (binascii.crc32(s.encode())):</span><br><span class="line">						f.write(s)</span><br><span class="line">						<span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CrackZip</span>():</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">68</span>):</span><br><span class="line">		file = <span class="string">&#x27;out&#x27;</span>+<span class="built_in">str</span>(i)+<span class="string">&#x27;.zip&#x27;</span></span><br><span class="line">		crc = zipfile.ZipFile(file,<span class="string">&#x27;r&#x27;</span>).getinfo(<span class="string">&#x27;data.txt&#x27;</span>).CRC</span><br><span class="line">		CrackCrc(crc)</span><br><span class="line">		print(<span class="string">&#x27;\r&#x27;</span>+<span class="string">&quot;loading：&#123;:%&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">float</span>((i+<span class="number">1</span>)/<span class="number">68</span>)),end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">dic = string.ascii_letters + string.digits + <span class="string">&#x27;+/=&#x27;</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;out.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;\nCRC32begin&quot;</span>)</span><br><span class="line">CrackZip()</span><br><span class="line">print(<span class="string">&quot;CRC32finished&quot;</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure></li>
+<li><p>解出来base64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z5BzAAANAAAAAAAAAKo+egCAIwBJAAAAVAAAAAKGNKv+a2MdSR0zAwABAAAAQ01UCRUUy91BT5UkSNPoj5hFEVFBRvefHSBCfG0ruGnKnygsMyj8SBaZHxsYHY84LEZ24cXtZ01y3k1K1YJ0vpK9HwqUzb6u9z8igEr3dCCQLQAdAAAAHQAAAAJi0efVT2MdSR0wCAAgAAAAZmxhZy50eHQAsDRpZmZpeCB0aGUgZmlsZSBhbmQgZ2V0IHRoZSBmbGFnxD17AEAHAA==</span><br></pre></td></tr></table></figure></li>
+<li><p>在线解密解出来的文字格式有点像压缩包，导出16进制扔进010<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%881.21.13.png" alt="" style="zoom:50%;" /></p>
+</li>
+<li><p>解码发现<code>c4 3d 7b 00 40 07 00</code>是rar文件尾，将Rar文件头<code>52 61 72 21 1a 07 00</code>补上</p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%881.22.56.png" style="zoom:50%;" />
 
+<ol start="6">
+<li><p>打开压缩包就可以看到注释<code>flag&#123;nev3r_enc0de_t00_sm4ll_fil3_w1th_zip&#125;</code></p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%881.25.04.png"></p>
+</li>
+</ol>
+<h3 id="HBNIS2018-caesar"><a href="#HBNIS2018-caesar" class="headerlink" title="[HBNIS2018]caesar"></a>[HBNIS2018]caesar</h3><ol>
+<li><p>打开txt，文本提示很明显凯撒密码</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%881.56.07.png" alt="截屏2021-01-04 下午1.56.07" style="zoom:50%;" />
+</li>
+<li><p>位移一组解密<code>flag&#123;flagiscaesar&#125;</code></p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%881.57.05.png"></p>
+</li>
+</ol>
+<h3 id="SWPU2019-你有没有好好看网课"><a href="#SWPU2019-你有没有好好看网课" class="headerlink" title="[SWPU2019]你有没有好好看网课?"></a>[SWPU2019]你有没有好好看网课?</h3><ol>
+<li><p>下载解压一气呵成，结果里面两个套娃压缩包，flag2压缩包有加密，查看了一下不是伪加密，flag3也是加密，但打开有注释6位数字，爆破压缩包密码<code>183792</code></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.17.52.png" style="zoom:50%;" />
+
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.18.50.png" style="zoom:50%;" />
+</li>
+<li><p>flag3中解压出一个word和影流之主视频mp4，应该是flag3中找到flag2压缩包的解压密码</p>
+<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.07.20.png"></p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.08.29.png" alt="" style="zoom:33%;" />
+</li>
+<li><p>应该是内容隐写在了视频里，仔细看了下word，提示列文虎克应该是仔细看视频的意思，<code>5.20</code>和<code>7.11</code>应该是视频的时间区间，按照这个思路排查下，发现了一串敲击码和base64编码</p>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.11.47.png" alt="" style="zoom: 50%;" />
+
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.12.42.png" alt="" style="zoom:50%;" />
+</li>
+<li><p>解码拼接一下<code>wllmup_up_up</code></p>
+</li>
+<li><p>尝试解一下flag2压缩包，成功解压出来图片，拖进010查看下，末尾就有flag<code>swpuctf&#123;A2e_Y0u_Ok?&#125;</code></p>
+</li>
+</ol>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-04%20%E4%B8%8B%E5%8D%8811.15.24.png" style="zoom:50%;" />
                 
             </div>
             <hr/>
