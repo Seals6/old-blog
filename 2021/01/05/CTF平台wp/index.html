@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="随笔盲水印与base64隐写杂项题, 菜鸡Seals6">
+    <meta name="keywords" content="CTF平台writeup, 菜鸡Seals6">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>随笔盲水印与base64隐写杂项题 | 菜鸡Seals6</title>
+    <title>CTF平台writeup | 菜鸡Seals6</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">随笔盲水印与base64隐写杂项题</h1>
+                    <h1 class="description center-align post-title">CTF平台writeup</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/misc/">
-                                <span class="chip bg-color">misc</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%9B%B2%E6%B0%B4%E5%8D%B0/">
-                                <span class="chip bg-color">盲水印</span>
+                            <a href="/tags/wp/">
+                                <span class="chip bg-color">wp</span>
                             </a>
                         
                     </div>
@@ -447,8 +443,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category">
-                                CTF
+                            <a href="/categories/BUUCTF/" class="post-category">
+                                BUUCTF
+                            </a>
+                        
+                            <a href="/categories/BUUCTF/BUGKU/" class="post-category">
+                                BUGKU
                             </a>
                         
                     </div>
@@ -460,14 +460,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-27
+                    2021-01-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-27
+                    2021-01-05
                 </div>
                 
 
@@ -486,53 +486,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h2 id="🌟前言"><a href="#🌟前言" class="headerlink" title="🌟前言"></a>🌟前言</h2><p>这道题是我刷题没遇见过的，做的时候确实把我整懵了，很多人知道什么是base64，但并不知道base64可以用来隐写。</p>
-<h2 id="🌟解题步骤"><a href="#🌟解题步骤" class="headerlink" title="🌟解题步骤"></a>🌟解题步骤</h2><p>1.下载下来是一个压缩包，里面一张鲲的图片</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-27%2016.17.50.png" style="zoom:50%;" />
+                <h3 id="关于这里"><a href="#关于这里" class="headerlink" title="关于这里"></a>关于这里</h3><ul>
+<li>由于博客目录框架限制，自己不太懂html，不能进行源代码修改，随着题目越来越多所以不能正常显示所有题目与大纲。</li>
+<li>现在已经将各个平台的刷题wp迁移至语雀平台，可以点击👉<a target="_blank" rel="noopener" href="https://www.yuque.com/seals6">Seals6的语雀</a>链接进行查看，等我将框架修改后再迁移回来。</li>
+</ul>
+<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-01-05%20%E4%B8%8B%E5%8D%884.48.47.png" style="zoom:50%;" />
 
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/kun.jpg" alt="kun题目"></p>
-<ol start="2">
-<li><p>因为是jpg，看了看详细信息没找到什么有用信息，直接扔到binwalk，看下有没有压缩包<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-27%2016.26.17.png" style="zoom:50%;" /><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-27%2016.27.59.png" style="zoom:50%;" /></p>
+
+
+<h3 id="关于wp"><a href="#关于wp" class="headerlink" title="关于wp"></a>关于wp</h3><ul>
+<li>flag都为题目所最后的解出来的原始完整的flag，参考BUU等其他平台提交时，请注意去掉原来的前缀，修改为<code>flag&#123;....&#125;</code></li>
+<li>当然我相信大多数人会自己去做，而不是抄答案，如果题目有过程问题可以评论，联系QQ等等，欢迎大家指正。</li>
+<li>暂时会将wp放置在语雀平台，参与的比赛wp与随笔笔记会放置在博客。wp会与GitHub同步更新。</li>
+<li>关于何时迁移呢，暂时还没有规划打算，也希望有大佬带带我。</li>
+</ul>
+<h3 id="平台目录"><a href="#平台目录" class="headerlink" title="平台目录"></a>平台目录</h3><ul>
+<li><p>BUUCTF</p>
+<ul>
+<li><p>Misc     刷题上传中  <code>80/300 </code></p>
 </li>
-<li><p>提取出来一个file文件和一个kun.txt，txt里面是base64编码隐写，主要原理在这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/destiny1507/article/details/99460025?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control">大佬博客</a>，直接上py解密脚本 </p>
+<li><p>Crypto  暂无计划</p>
 </li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">base64隐写解密py</span></span><br><span class="line">base64chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">flag=&#x27;&#x27;</span><br><span class="line">with open(&#x27;kun.txt&#x27;,&#x27;r&#x27;) as f:</span><br><span class="line">    for line in f.readlines():</span><br><span class="line">        line=line[:-1]</span><br><span class="line">        num=line.count(&#x27;=&#x27;)</span><br><span class="line">        if num == 0 :</span><br><span class="line">            continue</span><br><span class="line">        lastchar = line[-(num+1)]</span><br><span class="line">        </span><br><span class="line">        #print(line,num,lastchar)</span><br><span class="line">        myindex = base64chars.index(lastchar)</span><br><span class="line">        #print(myindex)</span><br><span class="line">        bin_str = bin(myindex)[2:].zfill(6)</span><br><span class="line">        #print(bin_str)</span><br><span class="line">        flag+=bin_str[6-2*num:]</span><br><span class="line">        #print(bin_str[6-2*num:])</span><br><span class="line">print(&#x27;&#x27;.join([chr(int(flag[i:i + 8], 2)) for i in range(0, len(flag), 8)]))</span><br></pre></td></tr></table></figure>
-
-
-<center>解出来一看就是flag的后面一部分</center>
-
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-27%2016.34.40.png"></p>
-<ol start="4">
-<li><p>那么前面的flag一部分应该就在flie文件里了，拖进010editor看看，明显感觉不对，最后一行<strong>14 04 03 4B 50</strong>一眼就看出来ZIP头文件被倒序输出了，上脚本将他反转回来。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">倒序输出py脚本</span></span><br><span class="line">a=open(&#x27;file&#x27;,&quot;rb&quot;).read()</span><br><span class="line">b=open(&#x27;file1&#x27;,&quot;wb&quot;)</span><br><span class="line">b.write(a[::-1])</span><br></pre></td></tr></table></figure>
-<p>打开反转回来的file1文件，解压出来里面还有两张png文件，经过我一顿乱搞啥也没发现，一脸懵逼</p>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-27%2016.43.38.png" style="zoom:50%;" />
-
-<ol>
-<li><p>因为是两个图片，后面查资料发现了盲水印这个技术，<a target="_blank" rel="noopener" href="https://github.com/chishaxie/BlindWaterMark">Github地址</a>。一顿操作猛如虎，结果安装python第三方库的时候报错卡了很久。使用时需要安装前置opencv库，matplotlib库</p>
-<p>具体安装教程我放在结尾了，感谢🙏写安装教程的师傅们。</p>
-<p>最后还是解出来了，但是按照官方文档教程使用python3时需要加<code>--oldseed</code>选项，可能是出题人没有考虑到，加了<code>--oldseed</code>选项是解不出来的。</p>
+<li><p>Web      暂无计划</p>
 </li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">shell</span></span><br><span class="line">python3 bwmforpy3.py decode kun2.png kun1.png flag.png</span><br></pre></td></tr></table></figure>
-<p><img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2020-12-27%2016.48.48.png"></p>
+</ul>
 </li>
-</ol>
-<img src="https://aliyunpico.oss-cn-chengdu.aliyuncs.com/img/flag.png" alt="flag" style="zoom:50%;" />
-
-<ol start="6">
-<li><p>最后将两部分拼接起来就好了，因为没有网址可以提交flag，第一个字是G还是C,无法判断 ?</p>
-<p><code>CUNTCTF&#123;B1g_fI5h_BEg0n1@&#125;</code></p>
-<p><code>GUNTCTF&#123;B1g_fI5h_BEg0n1@&#125;</code></p>
+</ul>
+<ul>
+<li>Bugku<ul>
+<li>Misc   刷题上传中</li>
+<li>Crypto   刷题中</li>
+<li>Web   暂无计划</li>
+</ul>
 </li>
-</ol>
-<h3 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h3><ol>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Flat-White/p/13517001.html">图片隐写术之盲水印安装使用详解</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ryuuku/p/7553458.html">ryuuku师傅的盲水印例题</a>    </li>
-<li><a target="_blank" rel="noopener" href="https://github.com/chishaxie/BlindWaterMark">盲水印BlindWaterMark项目脚本</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44009311/article/details/102770083?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control">base64隐写原理</a></li>
-</ol>
+</ul>
+<ul>
+<li>SCCMCTF <ul>
+<li>Misc 规划中</li>
+<li>Crypto 规划中</li>
+<li>Web 规划中</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -559,7 +554,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://seals6.gitee.io/2020/12/27/%E9%9A%8F%E7%AC%94%E7%9B%B2%E6%B0%B4%E5%8D%B0%E4%B8%8Ebase64%E9%9A%90%E5%86%99%E6%9D%82%E9%A1%B9%E9%A2%98/">https://seals6.gitee.io/2020/12/27/%E9%9A%8F%E7%AC%94%E7%9B%B2%E6%B0%B4%E5%8D%B0%E4%B8%8Ebase64%E9%9A%90%E5%86%99%E6%9D%82%E9%A1%B9%E9%A2%98/</a>
+                    <a href="https://seals6.gitee.io/2021/01/05/CTF%E5%B9%B3%E5%8F%B0wp/">https://seals6.gitee.io/2021/01/05/CTF%E5%B9%B3%E5%8F%B0wp/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,12 +592,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/misc/">
-                                    <span class="chip bg-color">misc</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%9B%B2%E6%B0%B4%E5%8D%B0/">
-                                    <span class="chip bg-color">盲水印</span>
+                                <a href="/tags/wp/">
+                                    <span class="chip bg-color">wp</span>
                                 </a>
                             
                         </div>
@@ -772,9 +763,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/01/05/CTF%E5%B9%B3%E5%8F%B0wp/">
                     <div class="card-image">
@@ -792,9 +784,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -811,6 +803,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -829,13 +822,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/26/2020%E7%BA%B5%E6%A8%AA%E6%9D%AFwp/">
+                <a href="/2020/12/27/%E9%9A%8F%E7%AC%94%E7%9B%B2%E6%B0%B4%E5%8D%B0%E4%B8%8Ebase64%E9%9A%90%E5%86%99%E6%9D%82%E9%A1%B9%E9%A2%98/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="2020纵横杯持续更新wp">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="随笔盲水印与base64隐写杂项题">
                         
-                        <span class="card-title">2020纵横杯持续更新wp</span>
+                        <span class="card-title">随笔盲水印与base64隐写杂项题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -846,17 +839,13 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/wp/" class="post-category">
-                                    wp
-                                </a>
-                            
-                            <a href="/categories/wp/CTF/" class="post-category">
+                            <a href="/categories/CTF/" class="post-category">
                                     CTF
                                 </a>
                             
@@ -869,6 +858,10 @@
                     
                     <a href="/tags/misc/">
                         <span class="chip bg-color">misc</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%9B%B2%E6%B0%B4%E5%8D%B0/">
+                        <span class="chip bg-color">盲水印</span>
                     </a>
                     
                 </div>
